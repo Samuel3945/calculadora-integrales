@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Calculadora de integrales</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;family=STIX+Two+Text:ital,wght@0,400;1,400;1,500&amp;display=swap">
+<style>
+body{margin:0;background:#F5F6F8}
+a{color:#1D4ED8}a:hover{color:#1E3A8A}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #1D4ED8;outline-offset:2px}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F5F6F8; color: #0F172A; font-family: Inter, system-ui, sans-serif; font-size: 14px; line-height: 1.5">
+
+  <header style="background: #FFFFFF; border-bottom: 1px solid #E2E8F0">
+    <div style="max-width: 1320px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px">
+      <div style="display: flex; align-items: center; gap: 12px; flex: 1 1 320px">
+        <div aria-hidden="true" style="width: 40px; height: 40px; border-radius: 10px; background: #0F172A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'STIX Two Text', serif; font-style: italic; font-size: 26px">∫</div>
+        <div>
+          <h1 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -0.01em">Calculadora de integrales</h1>
+          <p style="margin: 0; color: #475569; font-size: 13px">Métodos de Newton-Cotes abiertos y cerrados · simples y compuestos</p>
+        </div>
+      </div>
+      <nav aria-label="Secciones" style="display: flex; gap: 4px; background: #F1F5F9; padding: 4px; border-radius: 10px">
+        <a href="Main.dc.html" aria-current="page" style="min-height: 36px; padding: 0 16px; display: flex; align-items: center; border-radius: 8px; background: #FFFFFF; color: #0F172A; font-weight: 600; text-decoration: none; box-shadow: 0 1px 2px rgba(15,23,42,.12)">Calcular</a>
+        <a href="Comparar.dc.html" style="min-height: 36px; padding: 0 16px; display: flex; align-items: center; border-radius: 8px; color: #475569; font-weight: 500; text-decoration: none">Comparar métodos</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 8px; padding: 6px 12px; border: 1px solid #BBF7D0; background: #F0FDF4; border-radius: 999px; color: #166534; font-size: 13px; font-weight: 500">
+        <span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #16A34A"></span>
+        API conectada
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width: 1320px; margin: 0 auto; padding: 24px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+
+    <section aria-label="Función, resultado y gráfica" style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+          <h2 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 16px; font-weight: 600">Función a integrar</h2>
+          <span style="display: inline-flex; align-items: center; gap: 6px; color: #166534; background: #F0FDF4; border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>
+            Expresión válida
+          </span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; border: 2px solid #1D4ED8; border-radius: 12px; padding: 14px 18px; background: #FFFFFF">
+          <span style="font-family: 'STIX Two Text', serif; font-style: italic; font-size: 26px; color: #475569">f</span>
+          <span style="font-family: 'STIX Two Text', serif; font-size: 26px; color: #475569">(</span>
+          <span style="font-family: 'STIX Two Text', serif; font-style: italic; font-size: 26px; color: #475569; margin-left: -8px; margin-right: -8px">x</span>
+          <span style="font-family: 'STIX Two Text', serif; font-size: 26px; color: #475569">) =</span>
+          <span style="font-family: 'STIX Two Text', serif; font-size: 30px">sin(<span style="font-style: italic">x</span>)</span>
+          <span aria-hidden="true" style="width: 2px; height: 30px; background: #1D4ED8"></span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 16px; color: #475569; font-size: 12px">
+          <span>Formato enviado al servidor: <code style="font-family: 'JetBrains Mono', monospace; color: #0F172A; background: #F1F5F9; padding: 1px 6px; border-radius: 4px">sin(x)</code></span>
+          <span><span style="font-family: 'JetBrains Mono', monospace">ln</span> es el logaritmo natural</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px">
+          <sc-for list="{{ keys }}" as="k" hint-placeholder-count="24">
+            <button type="button" aria-label="{{ k.aria }}" style="{{ k.style }}">{{ k.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+          <span style="color: #475569; font-size: 12px; font-weight: 500">Ejemplos:</span>
+          <sc-for list="{{ examples }}" as="ex" hint-placeholder-count="5">
+            <button type="button" style="min-height: 32px; padding: 0 12px; border: 1px solid #E2E8F0; border-radius: 999px; background: #FFFFFF; color: #0F172A; font-family: 'STIX Two Text', serif; font-size: 15px; cursor: pointer">{{ ex }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <h2 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 16px; font-weight: 600">Integral definida</h2>
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 8px 0">
+          <div style="display: flex; align-items: center; gap: 4px">
+            <span aria-hidden="true" style="font-family: 'STIX Two Text', serif; font-size: 96px; line-height: 1; color: #0F172A">∫</span>
+            <div style="display: flex; flex-direction: column; justify-content: space-between; height: 120px">
+              <input type="text" value="{{ upper }}" onChange="{{ onUpper }}" aria-label="Límite superior b" style="width: 72px; height: 36px; box-sizing: border-box; border: 1px dashed #94A3B8; border-radius: 8px; padding: 0 8px; font-family: 'STIX Two Text', serif; font-size: 18px; text-align: center; background: #F8FAFC; color: #0F172A">
+              <input type="text" value="{{ lower }}" onChange="{{ onLower }}" aria-label="Límite inferior a" style="width: 72px; height: 36px; box-sizing: border-box; border: 1px dashed #94A3B8; border-radius: 8px; padding: 0 8px; font-family: 'STIX Two Text', serif; font-size: 18px; text-align: center; background: #F8FAFC; color: #0F172A">
+            </div>
+          </div>
+          <span style="font-family: 'STIX Two Text', serif; font-size: 34px">sin(<span style="font-style: italic">x</span>) <span style="font-style: italic">d</span><span style="font-style: italic">{{ variable }}</span></span>
+          <span style="font-family: 'STIX Two Text', serif; font-size: 34px; color: #475569">≈</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 600; color: #1D4ED8">2.0045597550</span>
+        </div>
+        <p style="margin: 0; color: #475569; font-size: 13px">Los límites se editan aquí o en la configuración: ambos campos muestran siempre el mismo valor.</p>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+          <h2 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 16px; font-weight: 600">Resultado</h2>
+          <span style="color: #475569; font-size: 13px">Simpson 1/3 · compuesta · 2 paneles</span>
+        </div>
+        <sc-if value="{{ dirty }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px; color: #92400E; font-size: 13px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6M12 17h.01"></path></svg>
+            La configuración cambió. Pulsa «Calcular integral» para actualizar el resultado.
+          </div>
+        </sc-if>
+        <div>
+          <div style="color: #475569; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em">Aproximación numérica</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 40px; font-weight: 600; letter-spacing: -0.02em">2.0045597550</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px">
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 14px">
+            <div style="color: #475569; font-size: 12px">Valor exacto</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600">2</div>
+            <div style="color: #475569; font-size: 12px">Calculado con SymPy</div>
+          </div>
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 14px">
+            <div style="color: #475569; font-size: 12px">Error absoluto</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600">4.5598 × 10⁻³</div>
+            <div style="color: #475569; font-size: 12px">|I exacta − I aprox.|</div>
+          </div>
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 14px">
+            <div style="color: #475569; font-size: 12px">Error relativo</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600">0.2280 %</div>
+            <div style="color: #475569; font-size: 12px">Error absoluto / |I exacta|</div>
+          </div>
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 12px 14px">
+            <div style="color: #475569; font-size: 12px">Error estimado</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600">≈ 4.58 × 10⁻³</div>
+            <div style="color: #475569; font-size: 12px">Richardson: r vs 2r paneles</div>
+          </div>
+        </div>
+        <dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; background: #F8FAFC; border-radius: 10px; padding: 12px 14px">
+          <div><dt style="color: #475569; font-size: 12px">Método</dt><dd style="margin: 0; font-weight: 600">Simpson 1/3</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Variante</dt><dd style="margin: 0; font-weight: 600">Compuesta</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Paneles (r)</dt><dd style="margin: 0; font-weight: 600; font-family: 'JetBrains Mono', monospace">2</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Subintervalos</dt><dd style="margin: 0; font-weight: 600; font-family: 'JetBrains Mono', monospace">4</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Paso interno h</dt><dd style="margin: 0; font-weight: 600; font-family: 'JetBrains Mono', monospace">0.785398</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Evaluaciones de f</dt><dd style="margin: 0; font-weight: 600; font-family: 'JetBrains Mono', monospace">5</dd></div>
+        </dl>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+          <h2 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 16px; font-weight: 600">Gráfica</h2>
+          <div style="display: flex; gap: 6px">
+            <button type="button" aria-label="Acercar" style="width: 36px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #0F172A; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"></path></svg></button>
+            <button type="button" aria-label="Alejar" style="width: 36px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #0F172A; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3M8 11h6"></path></svg></button>
+            <button type="button" aria-label="Restablecer vista" style="width: 36px; height: 36px; border: 1px solid #E2E8F0; border-radius: 8px; background: #FFFFFF; color: #0F172A; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5"></path></svg></button>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 12px; color: #475569">
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 18px; height: 3px; background: #1D4ED8; border-radius: 2px"></span>f(x)</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 10px; background: rgba(29,78,216,.16); border-radius: 2px"></span>Área de integración</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; background: #C2410C; border-radius: 50%"></span>Nodos evaluados por el método</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 18px; height: 0; border-top: 2px dashed #C2410C"></span>Aproximación (parábola por panel)</span>
+        </div>
+        <svg viewBox="0 0 640 280" style="width: 100%; height: auto; display: block" role="img" aria-label="Gráfica de sin(x) entre 0 y pi: área sombreada, 5 nodos de Simpson 1/3 y la parábola de cada uno de los 2 paneles">
+          <line x1="44" y1="40" x2="624" y2="40" stroke="#E2E8F0" stroke-width="1"></line>
+          <line x1="44" y1="120" x2="624" y2="120" stroke="#E2E8F0" stroke-width="1"></line>
+          <line x1="44" y1="16" x2="44" y2="248" stroke="#CBD5E1" stroke-width="1"></line>
+          <line x1="44" y1="200" x2="624" y2="200" stroke="#94A3B8" stroke-width="1.25"></line>
+          <path d="M83.8,200.0 L83.8,200.0 L88.0,195.8 L92.2,191.6 L96.3,187.4 L100.5,183.3 L104.7,179.1 L108.8,175.0 L113.0,170.8 L117.2,166.7 L121.3,162.6 L125.5,158.6 L129.7,154.6 L133.9,150.6 L138.0,146.6 L142.2,142.7 L146.4,138.8 L150.5,134.9 L154.7,131.1 L158.9,127.4 L163.0,123.7 L167.2,120.0 L171.4,116.4 L175.6,112.9 L179.7,109.4 L183.9,106.0 L188.1,102.6 L192.2,99.3 L196.4,96.1 L200.6,92.9 L204.7,89.9 L208.9,86.9 L213.1,83.9 L217.2,81.1 L221.4,78.3 L225.6,75.7 L229.8,73.1 L233.9,70.6 L238.1,68.1 L242.3,65.8 L246.4,63.6 L250.6,61.4 L254.8,59.4 L258.9,57.4 L263.1,55.6 L267.3,53.8 L271.5,52.2 L275.6,50.6 L279.8,49.2 L284.0,47.8 L288.1,46.6 L292.3,45.5 L296.5,44.4 L300.6,43.5 L304.8,42.7 L309.0,42.0 L313.2,41.4 L317.3,40.9 L321.5,40.5 L325.7,40.2 L329.8,40.1 L334.0,40.0 L338.2,40.1 L342.3,40.2 L346.5,40.5 L350.7,40.9 L354.8,41.4 L359.0,42.0 L363.2,42.7 L367.4,43.5 L371.5,44.4 L375.7,45.5 L379.9,46.6 L384.0,47.8 L388.2,49.2 L392.4,50.6 L396.5,52.2 L400.7,53.8 L404.9,55.6 L409.1,57.4 L413.2,59.4 L417.4,61.4 L421.6,63.6 L425.7,65.8 L429.9,68.1 L434.1,70.6 L438.2,73.1 L442.4,75.7 L446.6,78.3 L450.8,81.1 L454.9,83.9 L459.1,86.9 L463.3,89.9 L467.4,92.9 L471.6,96.1 L475.8,99.3 L479.9,102.6 L484.1,106.0 L488.3,109.4 L492.4,112.9 L496.6,116.4 L500.8,120.0 L505.0,123.7 L509.1,127.4 L513.3,131.1 L517.5,134.9 L521.6,138.8 L525.8,142.7 L530.0,146.6 L534.1,150.6 L538.3,154.6 L542.5,158.6 L546.7,162.6 L550.8,166.7 L555.0,170.8 L559.2,175.0 L563.3,179.1 L567.5,183.3 L571.7,187.4 L575.8,191.6 L580.0,195.8 L584.2,200.0 L584.2,200.0 Z" fill="#1D4ED8" fill-opacity="0.12"></path>
+          <line x1="334" y1="16" x2="334" y2="248" stroke="#94A3B8" stroke-width="1" stroke-dasharray="4 4"></line>
+          <line x1="83.8" y1="16" x2="83.8" y2="248" stroke="#0F172A" stroke-width="1.25"></line>
+          <line x1="584.2" y1="16" x2="584.2" y2="248" stroke="#0F172A" stroke-width="1.25"></line>
+          <path d="M44.0,239.6 L48.8,234.9 L53.7,230.1 L58.5,225.3 L63.3,220.5 L68.2,215.7 L73.0,210.9 L77.8,206.0 L82.7,201.2 L87.5,196.3 L92.3,191.4 L97.2,186.6 L102.0,181.8 L106.8,177.0 L111.7,172.2 L116.5,167.4 L121.3,162.7 L126.2,158.0 L131.0,153.3 L135.8,148.7 L140.7,144.1 L145.5,139.6 L150.3,135.1 L155.2,130.7 L160.0,126.4 L164.8,122.1 L169.7,117.9 L174.5,113.7 L179.3,109.7 L184.2,105.7 L189.0,101.9 L193.8,98.1 L198.7,94.4 L203.5,90.8 L208.3,87.3 L213.2,83.9 L218.0,80.6 L222.8,77.4 L227.7,74.4 L232.5,71.4 L237.3,68.6 L242.2,65.9 L247.0,63.3 L251.8,60.8 L256.7,58.5 L261.5,56.3 L266.3,54.2 L271.2,52.3 L276.0,50.5 L280.8,48.8 L285.7,47.3 L290.5,45.9 L295.3,44.7 L300.2,43.6 L305.0,42.6 L309.8,41.8 L314.7,41.2 L319.5,40.7 L324.3,40.3 L329.2,40.1 L334.0,40.0 L338.8,40.1 L343.7,40.3 L348.5,40.7 L353.3,41.2 L358.2,41.8 L363.0,42.6 L367.8,43.6 L372.7,44.7 L377.5,45.9 L382.3,47.3 L387.2,48.8 L392.0,50.5 L396.8,52.3 L401.7,54.2 L406.5,56.3 L411.3,58.5 L416.2,60.8 L421.0,63.3 L425.8,65.9 L430.7,68.6 L435.5,71.4 L440.3,74.4 L445.2,77.4 L450.0,80.6 L454.8,83.9 L459.7,87.3 L464.5,90.8 L469.3,94.4 L474.2,98.1 L479.0,101.9 L483.8,105.7 L488.7,109.7 L493.5,113.7 L498.3,117.9 L503.2,122.1 L508.0,126.4 L512.8,130.7 L517.7,135.1 L522.5,139.6 L527.3,144.1 L532.2,148.7 L537.0,153.3 L541.8,158.0 L546.7,162.7 L551.5,167.4 L556.3,172.2 L561.2,177.0 L566.0,181.8 L570.8,186.6 L575.7,191.4 L580.5,196.3 L585.3,201.2 L590.2,206.0 L595.0,210.9 L599.8,215.7 L604.7,220.5 L609.5,225.3 L614.3,230.1 L619.2,234.9 L624.0,239.6" fill="none" stroke="#1D4ED8" stroke-width="2.25"></path>
+          <sc-if value="{{ geom }}" hint-placeholder-val="{{ true }}">
+            <path d="M83.8,200.0 L90.1,192.8 L96.3,185.7 L102.6,178.8 L108.8,172.1 L115.1,165.5 L121.3,159.1 L127.6,152.9 L133.9,146.8 L140.1,140.9 L146.4,135.1 L152.6,129.6 L158.9,124.2 L165.1,118.9 L171.4,113.8 L177.6,108.9 L183.9,104.2 L190.1,99.6 L196.4,95.2 L202.7,90.9 L208.9,86.9 L215.2,82.9 L221.4,79.2 L227.7,75.6 L233.9,72.2 L240.2,68.9 L246.4,65.8 L252.7,62.9 L258.9,60.2 L265.2,57.6 L271.5,55.1 L277.7,52.9 L284.0,50.8 L290.2,48.9 L296.5,47.1 L302.7,45.5 L309.0,44.1 L315.2,42.8 L321.5,41.7 L327.7,40.8 L334.0,40.0" fill="none" stroke="#C2410C" stroke-width="1.75" stroke-dasharray="6 4"></path>
+            <path d="M334.0,40.0 L340.3,40.8 L346.5,41.7 L352.8,42.8 L359.0,44.1 L365.3,45.5 L371.5,47.1 L377.8,48.9 L384.0,50.8 L390.3,52.9 L396.5,55.1 L402.8,57.6 L409.1,60.2 L415.3,62.9 L421.6,65.8 L427.8,68.9 L434.1,72.2 L440.3,75.6 L446.6,79.2 L452.8,82.9 L459.1,86.9 L465.3,90.9 L471.6,95.2 L477.9,99.6 L484.1,104.2 L490.4,108.9 L496.6,113.8 L502.9,118.9 L509.1,124.2 L515.4,129.6 L521.6,135.1 L527.9,140.9 L534.1,146.8 L540.4,152.9 L546.7,159.1 L552.9,165.5 L559.2,172.1 L565.4,178.8 L571.7,185.7 L577.9,192.8 L584.2,200.0" fill="none" stroke="#C2410C" stroke-width="1.75" stroke-dasharray="6 4"></path>
+          </sc-if>
+          <circle cx="334" cy="40" r="9" fill="none" stroke="#C2410C" stroke-width="1.5"></circle>
+          <circle cx="83.8" cy="200" r="5" fill="#C2410C" stroke="#FFFFFF" stroke-width="2"></circle>
+          <circle cx="208.9" cy="86.9" r="5" fill="#C2410C" stroke="#FFFFFF" stroke-width="2"></circle>
+          <circle cx="334" cy="40" r="5" fill="#C2410C" stroke="#FFFFFF" stroke-width="2"></circle>
+          <circle cx="459.1" cy="86.9" r="5" fill="#C2410C" stroke="#FFFFFF" stroke-width="2"></circle>
+          <circle cx="584.2" cy="200" r="5" fill="#C2410C" stroke="#FFFFFF" stroke-width="2"></circle>
+          <g font-family="JetBrains Mono, monospace" font-size="11" fill="#475569">
+            <text x="38" y="44" text-anchor="end">1</text>
+            <text x="38" y="124" text-anchor="end">0.5</text>
+            <text x="38" y="204" text-anchor="end">0</text>
+            <text x="83.8" y="266" text-anchor="middle">0</text>
+            <text x="334" y="266" text-anchor="middle">π/2</text>
+            <text x="584.2" y="266" text-anchor="middle">π</text>
+            <text x="208.9" y="228" text-anchor="middle">Panel 1</text>
+            <text x="459.1" y="228" text-anchor="middle">Panel 2</text>
+          </g>
+          <g font-family="JetBrains Mono, monospace" font-size="11" fill="#0F172A" font-weight="600">
+            <text x="90" y="30">a = 0</text>
+            <text x="578" y="30" text-anchor="end">b = π</text>
+          </g>
+          <g>
+            <rect x="218" y="98" width="168" height="58" rx="6" fill="#0F172A"></rect>
+            <g font-family="JetBrains Mono, monospace" font-size="11" fill="#FFFFFF">
+              <text x="228" y="116">Nodo 2 · panel 1</text>
+              <text x="228" y="132">x = 0.785398</text>
+              <text x="228" y="148">f(x) = 0.707107</text>
+            </g>
+          </g>
+        </svg>
+        <p style="margin: 0; color: #475569; font-size: 12px">El nodo x = π/2 es compartido por los dos paneles: se evalúa una vez y aporta a ambos.</p>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap">
+          <h2 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 16px; font-weight: 600">Procedimiento numérico</h2>
+          <div style="display: flex; gap: 4px; background: #F1F5F9; padding: 4px; border-radius: 10px">
+            <button type="button" aria-pressed="{{ tabEvalsPressed }}" onClick="{{ showEvals }}" style="{{ tabEvalsStyle }}">Tabla de evaluaciones</button>
+            <button type="button" aria-pressed="{{ tabProcPressed }}" onClick="{{ showProc }}" style="{{ tabProcStyle }}">Fórmulas paso a paso</button>
+          </div>
+        </div>
+        <sc-if value="{{ tabEvals }}" hint-placeholder-val="{{ true }}">
+          <div style="overflow-x: auto; border: 1px solid #E2E8F0; border-radius: 10px">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px">
+              <thead>
+                <tr style="background: #F8FAFC; text-align: right">
+                  <th scope="col" style="padding: 10px 12px; font-weight: 600; color: #475569; text-align: left">#</th>
+                  <th scope="col" style="padding: 10px 12px; font-weight: 600; color: #475569; text-align: left">Panel</th>
+                  <th scope="col" style="padding: 10px 12px; font-weight: 600; color: #475569">x</th>
+                  <th scope="col" style="padding: 10px 12px; font-weight: 600; color: #475569">f(x)</th>
+                  <th scope="col" style="padding: 10px 12px; font-weight: 600; color: #475569">Peso</th>
+                  <th scope="col" style="padding: 10px 12px; font-weight: 600; color: #475569">Contribución</th>
+                </tr>
+              </thead>
+              <tbody style="font-family: 'JetBrains Mono', monospace">
+                <sc-for list="{{ rows }}" as="row" hint-placeholder-count="6">
+                  <tr style="border-top: 1px solid #E2E8F0; text-align: right">
+                    <td style="padding: 9px 12px; text-align: left">{{ row.n }}</td>
+                    <td style="padding: 9px 12px; text-align: left; font-family: Inter, sans-serif">{{ row.panel }}<sc-if value="{{ row.shared }}" hint-placeholder-val="{{ false }}"><span style="margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: #FFF7ED; color: #9A3412; font-size: 11px; font-weight: 600">compartido</span></sc-if></td>
+                    <td style="padding: 9px 12px">{{ row.x }}</td>
+                    <td style="padding: 9px 12px">{{ row.fx }}</td>
+                    <td style="padding: 9px 12px">{{ row.w }}</td>
+                    <td style="padding: 9px 12px; font-weight: 600">{{ row.c }}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px">
+            <span style="color: #475569">Panel 1: <strong style="font-family: 'JetBrains Mono', monospace; color: #0F172A">1.0022798775</strong></span>
+            <span style="color: #475569">Panel 2: <strong style="font-family: 'JetBrains Mono', monospace; color: #0F172A">1.0022798775</strong></span>
+            <span style="color: #475569">Suma total: <strong style="font-family: 'JetBrains Mono', monospace; color: #1D4ED8">2.0045597550</strong></span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ tabProc }}" hint-placeholder-val="{{ false }}">
+          <ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px">
+            <li>Ancho de cada panel: <span style="font-family: 'STIX Two Text', serif; font-size: 17px"><i>W</i> = (<i>b</i> − <i>a</i>) / <i>r</i> = π / 2 = 1.570796</span></li>
+            <li>Paso interno (2 subintervalos por panel): <span style="font-family: 'STIX Two Text', serif; font-size: 17px"><i>h</i> = <i>W</i> / 2 = 0.785398</span></li>
+            <li>En cada panel: <span style="font-family: 'STIX Two Text', serif; font-size: 17px"><i>I</i><sub>i</sub> = (<i>h</i>/3) [ <i>f</i>(<i>x</i><sub>0</sub>) + 4<i>f</i>(<i>x</i><sub>1</sub>) + <i>f</i>(<i>x</i><sub>2</sub>) ]</span></li>
+            <li>Panel 1, [0, π/2]: (0.785398/3) [0 + 4(0.707107) + 1] = 1.0022798775</li>
+            <li>Panel 2, [π/2, π]: (0.785398/3) [1 + 4(0.707107) + 0] = 1.0022798775</li>
+            <li>Suma de los paneles: <strong style="font-family: 'JetBrains Mono', monospace; color: #1D4ED8">I ≈ 2.0045597550</strong></li>
+          </ol>
+        </sc-if>
+      </div>
+    </section>
+
+    <aside aria-label="Configuración de la integral" style="flex: 1 1 340px; min-width: 0; max-width: 100%; display: flex; flex-direction: column; gap: 20px">
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 18px">
+        <h2 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 16px; font-weight: 600">Configuración</h2>
+
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="cfg-var" style="font-weight: 600; font-size: 13px">Variable de integración</label>
+          <input id="cfg-var" type="text" value="{{ variable }}" onChange="{{ onVariable }}" style="height: 44px; box-sizing: border-box; border: 1px solid #CBD5E1; border-radius: 10px; padding: 0 12px; font-family: 'STIX Two Text', serif; font-style: italic; font-size: 18px; color: #0F172A; background: #FFFFFF">
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <label for="cfg-lower" style="font-weight: 600; font-size: 13px">Límite inferior <i style="font-family: 'STIX Two Text', serif">a</i></label>
+            <input id="cfg-lower" type="text" value="{{ lower }}" onChange="{{ onLower }}" style="height: 44px; box-sizing: border-box; border: 1px solid #CBD5E1; border-radius: 10px; padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #0F172A; background: #FFFFFF; width: 100%">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <label for="cfg-upper" style="font-weight: 600; font-size: 13px">Límite superior <i style="font-family: 'STIX Two Text', serif">b</i></label>
+            <input id="cfg-upper" type="text" value="{{ upper }}" onChange="{{ onUpper }}" style="height: 44px; box-sizing: border-box; border: 1px solid #CBD5E1; border-radius: 10px; padding: 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 15px; color: #0F172A; background: #FFFFFF; width: 100%">
+          </div>
+        </div>
+        <p style="margin: -10px 0 0; color: #475569; font-size: 12px">Acepta números, π, e y expresiones como π/2.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-weight: 600; font-size: 13px">Familia del método</span>
+          <div style="display: flex; gap: 4px; background: #F1F5F9; padding: 4px; border-radius: 10px">
+            <button type="button" aria-pressed="{{ closedPressed }}" onClick="{{ pickClosed }}" style="{{ closedStyle }}">Cerrados</button>
+            <button type="button" aria-pressed="{{ openPressed }}" onClick="{{ pickOpen }}" style="{{ openStyle }}">Abiertos</button>
+          </div>
+          <p style="margin: 0; color: #475569; font-size: 12px">{{ familyHint }}</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span style="font-weight: 600; font-size: 13px">Método</span>
+          <sc-for list="{{ methods }}" as="m" hint-placeholder-count="4">
+            <button type="button" aria-pressed="{{ m.pressed }}" onClick="{{ m.pick }}" style="{{ m.cardStyle }}">
+              <span style="display: flex; justify-content: space-between; align-items: center; gap: 8px">
+                <span style="font-weight: 600; font-size: 14px; color: #0F172A">{{ m.name }}</span>
+                <span style="{{ m.dotStyle }}"></span>
+              </span>
+              <span style="color: #475569; font-size: 12px">{{ m.meta }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-weight: 600; font-size: 13px">Variante</span>
+          <div style="display: flex; gap: 4px; background: #F1F5F9; padding: 4px; border-radius: 10px">
+            <button type="button" aria-pressed="{{ simplePressed }}" onClick="{{ pickSimple }}" style="{{ simpleStyle }}">Simple</button>
+            <button type="button" aria-pressed="{{ compositePressed }}" onClick="{{ pickComposite }}" style="{{ compositeStyle }}">Compuesta</button>
+          </div>
+        </div>
+
+        <sc-if value="{{ isComposite }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-weight: 600; font-size: 13px">Cantidad de paneles <i style="font-family: 'STIX Two Text', serif">r</i></span>
+            <div style="display: flex; align-items: center; gap: 8px">
+              <button type="button" aria-label="Quitar un panel" onClick="{{ decPanels }}" style="width: 44px; height: 44px; border: 1px solid #CBD5E1; border-radius: 10px; background: #FFFFFF; color: #0F172A; font-size: 20px; cursor: pointer">−</button>
+              <span style="flex: 1; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid #CBD5E1; border-radius: 10px; font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600">{{ panels }}</span>
+              <button type="button" aria-label="Agregar un panel" onClick="{{ incPanels }}" style="width: 44px; height: 44px; border: 1px solid #CBD5E1; border-radius: 10px; background: #FFFFFF; color: #0F172A; font-size: 20px; cursor: pointer">+</button>
+            </div>
+            <p style="margin: 0; color: #475569; font-size: 12px">{{ panelHint }}</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isSimple }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; padding: 10px 12px; background: #F8FAFC; border-radius: 10px; color: #475569; font-size: 12px">La variante simple aplica la fórmula una sola vez sobre todo el intervalo (r = 1).</p>
+        </sc-if>
+
+        <fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+          <legend style="font-weight: 600; font-size: 13px; padding: 0; margin-bottom: 6px">Opciones</legend>
+          <label style="display: flex; align-items: center; gap: 10px; min-height: 32px; cursor: pointer">
+            <input type="checkbox" checked="{{ exact }}" onChange="{{ toggleExact }}" style="width: 18px; height: 18px; accent-color: #1D4ED8">
+            Calcular valor exacto (simbólico)
+          </label>
+          <label style="display: flex; align-items: center; gap: 10px; min-height: 32px; cursor: pointer">
+            <input type="checkbox" checked="{{ geom }}" onChange="{{ toggleGeom }}" style="width: 18px; height: 18px; accent-color: #1D4ED8">
+            Mostrar aproximación geométrica
+          </label>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px">
+            <label for="cfg-points">Puntos de la gráfica</label>
+            <input id="cfg-points" type="number" value="300" min="50" max="2000" style="width: 96px; height: 36px; box-sizing: border-box; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-family: 'JetBrains Mono', monospace; color: #0F172A; background: #FFFFFF">
+          </div>
+        </fieldset>
+
+        <button type="button" onClick="{{ calculate }}" style="min-height: 48px; border: 0; border-radius: 12px; background: #1D4ED8; color: #FFFFFF; font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; cursor: pointer">Calcular integral</button>
+        <a href="Comparar.dc.html" style="min-height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid #CBD5E1; border-radius: 12px; color: #0F172A; font-weight: 600; text-decoration: none">Comparar los 8 métodos</a>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="color: #475569; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em">Sobre el método</div>
+        <h3 style="margin: 0; font-family: 'Space Grotesk', Inter, sans-serif; font-size: 18px; font-weight: 600">{{ info.name }}</h3>
+        <div style="padding: 12px 14px; background: #F8FAFC; border-radius: 10px; font-family: 'STIX Two Text', serif; font-size: 17px; overflow-x: auto; white-space: nowrap">{{ info.formula }}</div>
+        <p style="margin: 0; color: #475569">{{ info.desc }}</p>
+        <dl style="margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+          <div><dt style="color: #475569; font-size: 12px">Grado de exactitud</dt><dd style="margin: 0; font-weight: 600">{{ info.degree }}</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Error compuesto</dt><dd style="margin: 0; font-weight: 600; font-family: 'STIX Two Text', serif; font-size: 16px">{{ info.order }}</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Nodos por panel</dt><dd style="margin: 0; font-weight: 600">{{ info.nodes }}</dd></div>
+          <div><dt style="color: #475569; font-size: 12px">Subintervalos por panel</dt><dd style="margin: 0; font-weight: 600">{{ info.sub }}</dd></div>
+        </dl>
+      </div>
+    </aside>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2060}}'>
+var METHODS = {
+  closed: [
+    { id: 'closed_trapezoid', name: 'Trapecio', degree: 1, sub: 1, nodes: 2, order: 'O(h²)', formula: 'I ≈ (h/2) [ f(x₀) + f(x₁) ]', desc: 'Sustituye la función por una recta en cada panel.' },
+    { id: 'closed_simpson_13', name: 'Simpson 1/3', degree: 3, sub: 2, nodes: 3, order: 'O(h⁴)', formula: 'I ≈ (h/3) [ f(x₀) + 4f(x₁) + f(x₂) ]', desc: 'Sustituye la función por una parábola en cada panel.' },
+    { id: 'closed_simpson_38', name: 'Simpson 3/8', degree: 3, sub: 3, nodes: 4, order: 'O(h⁴)', formula: 'I ≈ (3h/8) [ f(x₀) + 3f(x₁) + 3f(x₂) + f(x₃) ]', desc: 'Sustituye la función por un polinomio cúbico en cada panel.' },
+    { id: 'closed_boole', name: 'Regla de Boole', degree: 5, sub: 4, nodes: 5, order: 'O(h⁶)', formula: 'I ≈ (2h/45) [ 7f(x₀) + 32f(x₁) + 12f(x₂) + 32f(x₃) + 7f(x₄) ]', desc: 'Sustituye la función por un polinomio de grado 4 en cada panel.' }
+  ],
+  open: [
+    { id: 'open_midpoint', name: 'Punto medio', degree: 1, sub: 2, nodes: 1, order: 'O(h²)', formula: 'I ≈ W · f(m)', desc: 'Un único nodo en el centro de cada panel; nunca evalúa los extremos.' },
+    { id: 'open_newton_cotes_2', name: 'Newton-Cotes abierto · 2 puntos', degree: 1, sub: 3, nodes: 2, order: 'O(h²)', formula: 'I ≈ (3h/2) [ f(x₁) + f(x₂) ]', desc: 'Dos nodos interiores en W/3 y 2W/3 de cada panel.' },
+    { id: 'open_newton_cotes_3', name: 'Newton-Cotes abierto · 3 puntos', degree: 3, sub: 4, nodes: 3, order: 'O(h⁴)', formula: 'I ≈ (4h/3) [ 2f(x₁) − f(x₂) + 2f(x₃) ]', desc: 'Tres nodos interiores en W/4, W/2 y 3W/4; el peso central es negativo.' },
+    { id: 'open_newton_cotes_4', name: 'Newton-Cotes abierto · 4 puntos', degree: 3, sub: 5, nodes: 4, order: 'O(h⁴)', formula: 'I ≈ (5h/24) [ 11f(x₁) + f(x₂) + f(x₃) + 11f(x₄) ]', desc: 'Cuatro nodos interiores en W/5, 2W/5, 3W/5 y 4W/5.' }
+  ]
+};
+var SEG_ON = 'flex: 1; min-height: 40px; border: 0; border-radius: 8px; background: #FFFFFF; color: #0F172A; font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; box-shadow: 0 1px 2px rgba(15,23,42,.12); cursor: pointer';
+var SEG_OFF = 'flex: 1; min-height: 40px; border: 0; border-radius: 8px; background: transparent; color: #475569; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; cursor: pointer';
+var TAB_ON = 'min-height: 36px; padding: 0 14px; border: 0; border-radius: 8px; background: #FFFFFF; color: #0F172A; font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; box-shadow: 0 1px 2px rgba(15,23,42,.12); cursor: pointer';
+var TAB_OFF = 'min-height: 36px; padding: 0 14px; border: 0; border-radius: 8px; background: transparent; color: #475569; font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; cursor: pointer';
+var KEY_BASE = 'min-height: 44px; border: 1px solid #E2E8F0; border-radius: 10px; cursor: pointer; font-size: 16px; ';
+var KEY_MATH = KEY_BASE + 'background: #FFFFFF; color: #0F172A; font-family: STIX Two Text, serif;';
+var KEY_FN = KEY_BASE + 'background: #F8FAFC; color: #0F172A; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500;';
+var KEY_OP = KEY_BASE + 'background: #EEF2FF; color: #1E3A8A; font-family: Inter, sans-serif; font-weight: 600;';
+var KEY_CTRL = KEY_BASE + 'background: #F1F5F9; color: #0F172A; font-family: Inter, sans-serif; font-size: 13px; font-weight: 600;';
+function key(label, aria, style) { return { label: label, aria: aria, style: style }; }
+var KEYS = [
+  key('x', 'Variable x', KEY_MATH), key('x²', 'Al cuadrado', KEY_MATH), key('xⁿ', 'Potencia', KEY_MATH), key('√', 'Raíz cuadrada', KEY_MATH),
+  key('(', 'Abrir paréntesis', KEY_MATH), key(')', 'Cerrar paréntesis', KEY_MATH), key('π', 'Pi', KEY_MATH), key('e', 'Número e', KEY_MATH),
+  key('sin', 'Seno', KEY_FN), key('cos', 'Coseno', KEY_FN), key('tan', 'Tangente', KEY_FN), key('ln', 'Logaritmo natural', KEY_FN),
+  key('exp', 'Exponencial', KEY_FN), key('|x|', 'Valor absoluto', KEY_FN), key('×', 'Multiplicar', KEY_OP), key('÷', 'Dividir', KEY_OP),
+  key('asin', 'Arcoseno', KEY_FN), key('acos', 'Arcocoseno', KEY_FN), key('atan', 'Arcotangente', KEY_FN), key('sinh', 'Seno hiperbólico', KEY_FN),
+  key('cosh', 'Coseno hiperbólico', KEY_FN), key('tanh', 'Tangente hiperbólica', KEY_FN), key('+', 'Sumar', KEY_OP), key('−', 'Restar', KEY_OP),
+  key('←', 'Mover cursor a la izquierda', KEY_CTRL), key('→', 'Mover cursor a la derecha', KEY_CTRL), key('⌫', 'Borrar', KEY_CTRL), key('Limpiar', 'Borrar toda la expresión', KEY_CTRL)
+];
+var ROWS = [
+  { n: 1, panel: '1', shared: false, x: '0.000000', fx: '0.000000', w: '0.261799', c: '0.000000' },
+  { n: 2, panel: '1', shared: false, x: '0.785398', fx: '0.707107', w: '1.047198', c: '0.740480' },
+  { n: 3, panel: '1', shared: true, x: '1.570796', fx: '1.000000', w: '0.261799', c: '0.261799' },
+  { n: 4, panel: '2', shared: true, x: '1.570796', fx: '1.000000', w: '0.261799', c: '0.261799' },
+  { n: 5, panel: '2', shared: false, x: '2.356194', fx: '0.707107', w: '1.047198', c: '0.740480' },
+  { n: 6, panel: '2', shared: false, x: '3.141593', fx: '0.000000', w: '0.261799', c: '0.000000' }
+];
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { family: 'closed', methodId: 'closed_simpson_13', variant: 'composite', panels: 2, lower: '0', upper: 'π', variable: 'x', tab: 'evals', dirty: false, exact: true, geom: true };
+  }
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var change = function (patch) { patch.dirty = true; self.setState(patch); };
+    var list = METHODS[s.family];
+    var current = list.filter(function (m) { return m.id === s.methodId; })[0] || list[0];
+    var methods = list.map(function (m) {
+      var on = m.id === current.id;
+      return {
+        name: m.name,
+        meta: 'Grado ' + m.degree + ' · ' + m.sub + (m.sub === 1 ? ' subintervalo' : ' subintervalos') + ' por panel',
+        pressed: on ? 'true' : 'false',
+        cardStyle: 'display: flex; flex-direction: column; gap: 2px; text-align: left; min-height: 56px; padding: 10px 14px; border-radius: 10px; cursor: pointer; font-family: Inter, sans-serif; background: ' + (on ? '#EEF2FF' : '#FFFFFF') + '; border: ' + (on ? '2px solid #1D4ED8' : '1px solid #E2E8F0'),
+        dotStyle: 'width: 16px; height: 16px; border-radius: 50%; box-sizing: border-box; flex: none; ' + (on ? 'border: 5px solid #1D4ED8; background: #FFFFFF' : 'border: 2px solid #94A3B8'),
+        pick: function () { change({ methodId: m.id }); }
+      };
+    });
+    var composite = s.variant === 'composite';
+    var r = composite ? s.panels : 1;
+    return {
+      keys: KEYS,
+      examples: ['x²', 'sin(x)', 'π·x²', '(x² + 1)/√x', 'eˣ'],
+      rows: ROWS,
+      lower: s.lower,
+      upper: s.upper,
+      variable: s.variable,
+      dirty: s.dirty,
+      exact: s.exact,
+      geom: s.geom,
+      onLower: function (e) { change({ lower: e.target.value }); },
+      onUpper: function (e) { change({ upper: e.target.value }); },
+      onVariable: function (e) { change({ variable: e.target.value }); },
+      closedPressed: s.family === 'closed' ? 'true' : 'false',
+      openPressed: s.family === 'open' ? 'true' : 'false',
+      closedStyle: s.family === 'closed' ? SEG_ON : SEG_OFF,
+      openStyle: s.family === 'open' ? SEG_ON : SEG_OFF,
+      pickClosed: function () { change({ family: 'closed', methodId: METHODS.closed[0].id }); },
+      pickOpen: function () { change({ family: 'open', methodId: METHODS.open[0].id }); },
+      familyHint: s.family === 'closed' ? 'Usan los extremos de cada panel como nodos.' : 'Solo usan nodos interiores: nunca evalúan los extremos del panel.',
+      methods: methods,
+      info: current,
+      simplePressed: composite ? 'false' : 'true',
+      compositePressed: composite ? 'true' : 'false',
+      simpleStyle: composite ? SEG_OFF : SEG_ON,
+      compositeStyle: composite ? SEG_ON : SEG_OFF,
+      pickSimple: function () { change({ variant: 'simple' }); },
+      pickComposite: function () { change({ variant: 'composite', panels: Math.max(2, s.panels) }); },
+      isComposite: composite,
+      isSimple: !composite,
+      panels: r,
+      panelHint: 'Subintervalos elementales: ' + r + ' × ' + current.sub + ' = ' + (r * current.sub),
+      decPanels: function () { change({ panels: Math.max(2, s.panels - 1) }); },
+      incPanels: function () { change({ panels: Math.min(1000, s.panels + 1) }); },
+      toggleExact: function () { change({ exact: !s.exact }); },
+      toggleGeom: function () { self.setState({ geom: !s.geom }); },
+      calculate: function () { self.setState({ dirty: false }); },
+      tabEvals: s.tab === 'evals',
+      tabProc: s.tab === 'proc',
+      tabEvalsPressed: s.tab === 'evals' ? 'true' : 'false',
+      tabProcPressed: s.tab === 'proc' ? 'true' : 'false',
+      tabEvalsStyle: s.tab === 'evals' ? TAB_ON : TAB_OFF,
+      tabProcStyle: s.tab === 'proc' ? TAB_ON : TAB_OFF,
+      showEvals: function () { self.setState({ tab: 'evals' }); },
+      showProc: function () { self.setState({ tab: 'proc' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
