@@ -1,0 +1,34 @@
+[project]
+name = "integral-calculator-backend"
+version = "1.0.0"
+description = "Definite integral calculator: eight Newton-Cotes rules, Clean Architecture + Strategy"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.163.2",
+    "uvicorn[standard]==0.54.0",
+    "pydantic==2.14.3",
+    "pydantic-settings==2.16.3",
+    "sympy==1.14.0",
+    "numpy==2.5.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.2.0",
+    "httpx==0.28.1",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+filterwarnings = [
+    "error::pytest.PytestUnraisableExceptionWarning",
+    # httpx is the required TestClient transport for the pinned Starlette; its deprecation
+    # notice (a suggestion to migrate to httpx2) is not actionable here.
+    "ignore:Using `httpx` with `starlette.testclient`:DeprecationWarning",
+    "ignore:Using `httpx` with `starlette.testclient`:starlette.exceptions.StarletteDeprecationWarning",
+]

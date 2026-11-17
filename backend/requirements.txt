@@ -1,0 +1,7 @@
+# Runtime dependencies (exact pins). Tested with Python 3.14.4.
+fastapi==0.163.2
+uvicorn[standard]==0.54.0
+pydantic==2.14.3
+pydantic-settings==2.16.3
+sympy==1.14.0
+numpy==2.5.5
