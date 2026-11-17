@@ -1,0 +1,30 @@
+.empty { color: var(--muted); }
+
+.tableWrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-control); }
+
+.table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
+.table th { padding: 10px 12px; font-weight: 600; color: var(--muted); text-align: right; background: var(--soft); }
+.table td { padding: 9px 12px; text-align: right; border-top: 1px solid var(--line); font-family: var(--font-mono); white-space: nowrap; }
+.table .left { text-align: left; }
+.table .ui { font-family: var(--font-ui); }
+.strong { font-weight: 600; }
+
+.sums { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px; color: var(--muted); }
+.sumItem strong { font-family: var(--font-mono); color: var(--ink); }
+.total { color: var(--accent) !important; }
+
+.more { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; color: var(--muted); font-size: 13px; }
+
+.link {
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.steps li { overflow-wrap: anywhere; }
+.expr { font-family: var(--font-mono); font-size: 12.5px; }

@@ -1,0 +1,55 @@
+:root {
+  /* Colour */
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --placeholder: #94a3b8;
+  --ground: #f5f6f8;
+  --surface: #ffffff;
+  --soft: #f8fafc;
+  --soft-2: #f1f5f9;
+  --accent: #1d4ed8;
+  --accent-strong: #1e3a8a;
+  --accent-soft: #eef2ff;
+  --accent-area: rgba(29, 78, 216, 0.16);
+  --node: #c2410c;
+  --open: #ea580c;
+  --ok-bg: #f0fdf4;
+  --ok-border: #bbf7d0;
+  --ok-ink: #166534;
+  --ok-dot: #16a34a;
+  --ok-chip: #dcfce7;
+  --warn-bg: #fffbeb;
+  --warn-border: #fde68a;
+  --warn-ink: #92400e;
+  --err-bg: #fef2f2;
+  --err-border: #fecaca;
+  --err-ink: #991b1b;
+  --err-dot: #dc2626;
+  --shared-bg: #fff7ed;
+  --shared-ink: #9a3412;
+  --chip-ink: #334155;
+
+  /* Typography */
+  --font-ui: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', Inter, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-math: 'STIX Two Text', 'Times New Roman', serif;
+
+  /* Shape and elevation */
+  --radius-card: 14px;
+  --radius-control: 10px;
+  --radius-small: 8px;
+  --shadow-seg: 0 1px 2px rgba(15, 23, 42, 0.12);
+
+  /* Layout */
+  --page-max: 1320px;
+  --gutter: 24px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+  }
+}

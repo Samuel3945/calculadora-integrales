@@ -1,0 +1,96 @@
+.header { background: var(--surface); border-bottom: 1px solid var(--line); }
+
+.inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 14px var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas: 'brand nav pill';
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.brand { grid-area: brand; display: flex; align-items: center; gap: 12px; min-width: 0; }
+
+.logo {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-math);
+  font-style: italic;
+  font-size: 26px;
+}
+
+.title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.subtitle { color: var(--muted); font-size: 13px; }
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  gap: 4px;
+  background: var(--soft-2);
+  padding: 4px;
+  border-radius: var(--radius-control);
+}
+
+.tab {
+  min-height: 44px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 500;
+}
+.tab[aria-current='page'] { background: var(--surface); color: var(--ink); font-weight: 600; box-shadow: var(--shadow-seg); }
+.tabShort { display: none; }
+
+.pill {
+  grid-area: pill;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.online { border-color: var(--ok-border); background: var(--ok-bg); color: var(--ok-ink); }
+.online .dot { background: var(--ok-dot); }
+.offline { border-color: var(--err-border); background: var(--err-bg); color: var(--err-ink); }
+.offline .dot { background: var(--err-dot); }
+.checking { border-color: var(--line); background: var(--soft); color: var(--muted); }
+.checking .dot { background: var(--placeholder); }
+
+@media (max-width: 640px) {
+  .inner {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'brand pill' 'nav nav';
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 12px;
+  }
+  .logo { width: 36px; height: 36px; font-size: 22px; }
+  .title { font-size: 18px; }
+  .subtitle { display: none; }
+  .tab { flex: 1; }
+  .tabLong { display: none; }
+  .tabShort { display: inline; }
+  /* status collapses to a dot (the label stays available to assistive technology) */
+  .pill { padding: 0; border: 0; background: transparent; }
+  .pillText { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+  .dot { width: 12px; height: 12px; }
+}

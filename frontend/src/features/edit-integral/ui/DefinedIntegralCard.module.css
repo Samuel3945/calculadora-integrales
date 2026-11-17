@@ -1,0 +1,47 @@
+.formula {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+.sign { display: flex; align-items: center; gap: 4px; }
+
+.integralSign {
+  font-family: var(--font-math);
+  font-size: 96px;
+  line-height: 1;
+}
+
+.bounds {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
+}
+
+.integrand {
+  font-size: 28px;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+
+.placeholder { font-family: var(--font-math); font-size: 34px; }
+
+.approx {
+  font-family: var(--font-math);
+  font-size: 34px;
+  color: var(--muted);
+}
+
+.note { color: var(--muted); font-size: 13px; }
+
+@media (max-width: 640px) {
+  .formula { gap: 10px; }
+  .integralSign { font-size: 72px; }
+  .bounds { height: 100px; }
+  .integrand { font-size: 22px; }
+}

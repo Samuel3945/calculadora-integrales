@@ -1,0 +1,16 @@
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid;
+  border-radius: var(--radius-control);
+  font-size: 13px;
+}
+
+.icon { flex: none; margin-top: 2px; }
+.body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+
+.warning { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn-ink); }
+.error { background: var(--err-bg); border-color: var(--err-border); color: var(--err-ink); }
+.info { background: var(--accent-soft); border-color: #c7d2fe; color: var(--accent-strong); }

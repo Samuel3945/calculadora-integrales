@@ -1,0 +1,15 @@
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.ok { background: var(--ok-chip); color: var(--ok-ink); }
+.neutral { background: var(--soft-2); color: var(--chip-ink); }
+.shared { background: var(--shared-bg); color: var(--shared-ink); }
+.error { background: var(--err-bg); color: var(--err-ink); }
